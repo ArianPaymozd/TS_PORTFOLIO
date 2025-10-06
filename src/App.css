@@ -1,0 +1,41 @@
+
+div::-webkit-scrollbar, div {
+  -ms-overflow-style: none; /* Hides the scrollbar */
+  scrollbar-width: none; /* "none" hides the scrollbar */
+  font-family: "Bitcount Single Ink", system-ui;
+}
+
+div::-webkit-scrollbar {
+  display: none;
+}
+
+textarea:focus {
+  outline: none;
+}
+textarea {
+  resize: none;
+  font-family: "Bitcount Single Ink", system-ui;
+  font-size: 1.6vh;
+  padding: 1vh;
+}
+
+.carousel {
+  /* Set a defined height and overflow for the content */
+  position: relative; /* Essential for positioning the mask */
+
+  /* Apply the mask-image for the fade effect */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 5%,
+    black 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 5%,
+    black 90%,
+    transparent 100%
+  );
+}
