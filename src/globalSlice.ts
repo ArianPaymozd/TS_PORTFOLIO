@@ -4,12 +4,14 @@ interface GlobalState {
   page: number,
   nextPage: number,
   transitioning: boolean,
+  isSlim: boolean
 }
 
 const initialState: GlobalState = {
   page: 0,
   nextPage: 0,
   transitioning: false,
+  isSlim: window.innerHeight < 1000
 };
 
 export const globalSlice = createSlice({
@@ -37,6 +39,9 @@ export const globalSlice = createSlice({
     stopTransition: (state) => {
       state.transitioning = false
       state.page = state.nextPage
+    },
+    isSlim: (state) => {
+      state.isSlim = window.innerWidth < 650
     }
   },
 });
@@ -47,7 +52,8 @@ export const {
   startTransition,
   endTransition,
   transition,
-  stopTransition
+  stopTransition,
+  isSlim
 } = globalSlice.actions;
 
 export default globalSlice.reducer;

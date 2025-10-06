@@ -6,6 +6,7 @@ import TextFill from './TextFill';
 
 const Nav: FC <{}> = ({}) => {
   const dispatch = useAppDispatch()
+  const isSlim = useAppSelector(state => state.global.isSlim)
   const nextPage = useAppSelector(state => state.global.nextPage)
   const spring = useSpring({
     from: {opacity: 0},
@@ -16,10 +17,13 @@ const Nav: FC <{}> = ({}) => {
       style={{
         position: "absolute",
         display: "flex",
+        flexDirection: isSlim ? "column-reverse" : "row",
         top: 0,
         left: 0,
         width: "100vw",
-        justifyContent: 'space-between',
+        height: "15dvh",
+        justifyContent: !isSlim ? "space-between" : "flex-end",
+        // alignItems: isSlim ? "space-between" : "flex-start",
         ...spring,
         zIndex: 6
       }}
@@ -86,8 +90,10 @@ const Nav: FC <{}> = ({}) => {
       <div
         style={{
           fontSize: 30,
-          marginTop: "2vh",
-          marginRight: "3vw"
+          marginTop: 10,
+          marginRight: isSlim ? "auto" : "3vw",
+          marginLeft: isSlim ? "auto" : "3vw",
+          width: "250px"
         }}
         onClick={() => dispatch(transition(4))}
       >

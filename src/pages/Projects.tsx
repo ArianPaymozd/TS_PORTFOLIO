@@ -2,8 +2,10 @@ import { type FC } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import Carousel from '../components/Carousel';
 import TypeText from '../components/TypeText';
+import { useAppSelector } from '../hooks';
 
 const Projects: FC <{}> = ({}) => {
+  const isSlim = useAppSelector(state => state.global.isSlim)
   const spring = useSpring({
     from: {opacity: 0},
     to: {opacity: 1}
@@ -18,28 +20,31 @@ const Projects: FC <{}> = ({}) => {
         left: 0,
         width: "100vw",
         height: "100%",
-        paddingTop: "10vh",
+        paddingTop: "10dvh",
         ...spring
       }}
     >
       <div
         style={{
           display: "flex",
-          flexDirection: "row",
-          marginTop: "5vh",
+          flexDirection: isSlim ? "column" : "row",
+          alignItems: "center",
+          marginTop: "5dvh",
           justifyContent: "space-evenly"
         }}
       >
         <div
           style={{
-            flex: .4,
             borderRadius: 5,
             border: "2px solid black",
+            height: isSlim ? "35vh": "75vh",
+            width: isSlim ? "80vw": "40vw",
+            overflow: "auto"
           }}
         >
           <div
             style={{
-              margin: "8vh"
+              margin: isSlim ? "3vh" : "8vh"
             }}
           >
             <TypeText 
@@ -52,19 +57,28 @@ const Projects: FC <{}> = ({}) => {
             />
           </div>
         </div>
-        <div 
+        {!isSlim && <div 
           style={{
             height: "50vh",
             width: "3px",
             backgroundColor: "black",
-            marginLeft: "3vw",
+            marginLeft: "5vw",
             marginTop: "13vh"
           }}
-        />
+        />}
+        {isSlim && <div 
+          style={{
+            height: "3px",
+            width: "50vw",
+            backgroundColor: "black",
+            marginTop: "5vh"
+          }}
+        />}
         <div
           style={{
-            flex: .4,
-            height: "75vh",
+            height: isSlim ? "35vh": "75vh",
+            marginTop: isSlim ? "5vh" : 0,
+            width: isSlim ? "80vw": "40vw",
           }}
         >
           <Carousel items={[

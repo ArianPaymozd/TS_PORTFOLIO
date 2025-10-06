@@ -18,20 +18,20 @@ const Contact: FC <{}> = ({}) => {
 
   const emailSpring = useSpring({
     config: {duration: 300},
-    from: {height: "0vh",},
-    to: {height: "5vh",},
+    from: {height: "0dvh",},
+    to: {height: "5dvh",},
     delay: 200
   })
   const nameSpring = useSpring({
     config: {duration: 300},
-    from: {height: "0vh",},
-    to: {height: "5vh",},
+    from: {height: "0dvh",},
+    to: {height: "5dvh",},
     delay: 500
   })
   const spring = useSpring({
     config: {duration: 1000},
-    from: {height: "0vh",},
-    to: {height: "60vh",},
+    from: {height: "0dvh",},
+    to: {height: "60dvh",},
     delay: 800
   })
 
@@ -82,21 +82,26 @@ const Contact: FC <{}> = ({}) => {
         left: 0,
         width: "100vw",
         height: "100%",
-        paddingTop: "15vh",
+        paddingTop: "15dvh",
         alignItems: "center",
         justifyContent: "flex-start"
       }}
     >
-      <TypeText text="SEND ME A MESSAGE" /><div
+      <div
+        style={{fontSize: "2dvh"}}
+      >
+        <TypeText text="SEND ME A MESSAGE" />
+      </div>
+      <div
         style={{
           width: "70vw",
-          height: "5vh",
+          height: "5dvh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           position: "relative",
           borderRadius: 4,
-          marginTop: "2vh"
+          marginTop: "2dvh"
         }}
       >
         <animated.div
@@ -117,7 +122,7 @@ const Contact: FC <{}> = ({}) => {
         <div
           style={{
             width: "calc(70vw - 4px)",
-            height: "calc(5vh - 4px)",
+            height: "calc(5dvh - 4px)",
             backgroundColor: "white",
             borderRadius: 4,
             position: "relative",
@@ -134,7 +139,7 @@ const Contact: FC <{}> = ({}) => {
             style={{
               border: "none",
               width: "calc(68vw - 4px)",
-              height: "calc(3vh - 4px)",
+              height: "calc(3dvh - 4px)",
               position: "relative",
               background: "none",
               zIndex: 2
@@ -143,9 +148,9 @@ const Contact: FC <{}> = ({}) => {
           <div
             style={{
               position: "absolute",
-              top: "1vh",
-              left: "1vh",
-              fontSize: "1.6vh",
+              top: "1dvh",
+              left: "1dvh",
+              fontSize: "1.6dvh",
               zIndex: 1
             }}
           >
@@ -156,13 +161,13 @@ const Contact: FC <{}> = ({}) => {
       <div
         style={{
           width: "70vw",
-          height: "5vh",
+          height: "5dvh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           position: "relative",
           borderRadius: 4,
-          marginTop: "2vh"
+          marginTop: "2dvh"
         }}
       >
         <animated.div
@@ -183,7 +188,7 @@ const Contact: FC <{}> = ({}) => {
         <div
           style={{
             width: "calc(70vw - 4px)",
-            height: "calc(5vh - 4px)",
+            height: "calc(5dvh - 4px)",
             backgroundColor: "white",
             borderRadius: 4,
             position: "relative",
@@ -200,7 +205,7 @@ const Contact: FC <{}> = ({}) => {
             style={{
               border: "none",
               width: "calc(68vw - 4px)",
-              height: "calc(3vh - 4px)",
+              height: "calc(3dvh - 4px)",
               position: "relative",
               background: "none",
               zIndex: 2
@@ -209,9 +214,9 @@ const Contact: FC <{}> = ({}) => {
           <div
             style={{
               position: "absolute",
-              top: "1vh",
-              left: "1vh",
-              fontSize: "1.6vh",
+              top: "1dvh",
+              left: "1dvh",
+              fontSize: "1.6dvh",
               zIndex: 1
             }}
           >
@@ -222,13 +227,13 @@ const Contact: FC <{}> = ({}) => {
       <div
         style={{
           width: "70vw",
-          height: "60vh",
+          height: "60dvh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           position: "relative",
           borderRadius: 4,
-          marginTop: "2vh"
+          marginTop: "2dvh"
         }}
       >
         <animated.div
@@ -250,7 +255,7 @@ const Contact: FC <{}> = ({}) => {
           onClick={() => inputRef?.current?.focus()}
           style={{
             width: "calc(70vw - 4px)",
-            height: "calc(60vh - 4px)",
+            height: "calc(60dvh - 4px)",
             backgroundColor: "white",
             borderRadius: 4,
             position: "relative",
@@ -267,7 +272,7 @@ const Contact: FC <{}> = ({}) => {
             style={{
               border: "none",
               width: "calc(68vw - 4px)",
-              height: "calc(58vh - 4px)",
+              height: "calc(58dvh - 4px)",
               position: "relative",
               background: "none",
               zIndex: 2
@@ -276,9 +281,9 @@ const Contact: FC <{}> = ({}) => {
           <div
             style={{
               position: "absolute",
-              top: "1vh",
-              left: "1vh",
-              fontSize: "1.6vh",
+              top: "1dvh",
+              left: "1dvh",
+              fontSize: "1.6dvh",
               zIndex: 1
             }}
           >
@@ -291,8 +296,8 @@ const Contact: FC <{}> = ({}) => {
         && <div
           onClick={() => handleSendMessage()}
           style={{
-            marginTop: "1.5vh",
-            fontSize: "2vh"
+            marginTop: "1.5dvh",
+            fontSize: "2dvh"
           }}
         >
           {!sent && !loading && <TextFill text="SEND" />}
@@ -300,8 +305,8 @@ const Contact: FC <{}> = ({}) => {
       }
       <div
         style={{
-          marginTop: "1.5vh",
-          fontSize: "2vh"
+          marginTop: "1.5dvh",
+          fontSize: "2dvh"
         }}
       >
         {loading && <TypeText text="LOADING..." />}

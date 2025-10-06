@@ -76,7 +76,6 @@ const Carousel: FC <{items: CarouselItem[]}> = ({items}) => {
       style={{
         height: "100%",
         overflow: "auto",
-        marginLeft: 30,
       }}
       onMouseLeave={() => handleMouseLeave()}
     >
