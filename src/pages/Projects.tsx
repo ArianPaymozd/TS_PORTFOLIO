@@ -44,7 +44,7 @@ const Projects: FC <{}> = ({}) => {
           >
             <TypeText 
               text={`
-                My last position took up all my coading bandwidth
+                My last position took up all my coding bandwidth
                 but I'm loving creating for myself again! Be sure
                 to check back soon to see new projects I'm working on
                 and let me know if you have any ideas!
