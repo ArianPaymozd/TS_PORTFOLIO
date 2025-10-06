@@ -16,6 +16,7 @@ function App() {
   const transitioning = useAppSelector((state) => state.global.transitioning);
 
   useEffect(() => {
+    dispatch(isSlim())
     window.addEventListener('resize', () => dispatch(isSlim()))
   }, [])
 
