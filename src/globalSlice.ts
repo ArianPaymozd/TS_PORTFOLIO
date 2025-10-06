@@ -11,7 +11,7 @@ const initialState: GlobalState = {
   page: 0,
   nextPage: 0,
   transitioning: false,
-  isSlim: window.innerHeight < 1000
+  isSlim: window.innerHeight < 650
 };
 
 export const globalSlice = createSlice({
