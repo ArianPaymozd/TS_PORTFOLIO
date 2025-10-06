@@ -7,8 +7,9 @@ type CarouselItem = {
   img: string,
   title: string,
   caption?: string
+  idx?: number
 }
 
 type CarouselScroll = {
-  opacity: number, marginTop: number, transform?: string
+  opacity: number, marginTop?: number, transform?: string
 }

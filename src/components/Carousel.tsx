@@ -9,9 +9,9 @@ const Carousel: FC <{items: CarouselItem[]}> = ({items}) => {
   const [scrolling, setScrolling] = useState(false)
   const [springs, api] = useSprings(
     items.length,
-    (idx): {from: CarouselScroll, to: CarouselScroll} => ({
-      from: { opacity: 0, marginTop: 0 },
-      to: { opacity: 1, marginTop: idx === 0 ? 10 : 60 }
+    (): {from: CarouselScroll, to: CarouselScroll} => ({
+      from: { opacity: 0 },
+      to: { opacity: 1}
     }),
     [scrollVelocity]
   )
@@ -63,6 +63,7 @@ const Carousel: FC <{items: CarouselItem[]}> = ({items}) => {
   }, []);
   
   const handleMouseLeave = () => {
+    setScrolling(false)
     api.start({
       transform: `perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)`
   })
@@ -77,7 +78,9 @@ const Carousel: FC <{items: CarouselItem[]}> = ({items}) => {
         height: "100%",
         overflow: "auto",
       }}
+      onTouchStartCapture={() => handleMouseLeave()}
       onMouseLeave={() => handleMouseLeave()}
+      onMouseMove={() => handleMouseLeave()}
     >
       {springs.map((props, idx) => (
         <animated.div 
@@ -89,12 +92,14 @@ const Carousel: FC <{items: CarouselItem[]}> = ({items}) => {
             ...props,
             marginLeft: "auto",
             marginRight: "auto",
+            marginTop: idx === 0 ? 10 : 60,
             display: "flex",
             justifyContent: "space-evenly",
-            position: "relative"
+            position: "relative",
+            zIndex: items.length - idx
           }}
         >
-          <Card scrolling={scrolling} item={items[idx]} />
+          <Card scrolling={scrolling} item={{...items[idx], idx: idx}} />
         </animated.div>
       ))}
     </div>

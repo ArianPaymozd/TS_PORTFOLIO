@@ -23,7 +23,6 @@ const Nav: FC <{}> = ({}) => {
         width: "100vw",
         height: "15dvh",
         justifyContent: !isSlim ? "space-between" : "flex-end",
-        // alignItems: isSlim ? "space-between" : "flex-start",
         ...spring,
         zIndex: 6
       }}

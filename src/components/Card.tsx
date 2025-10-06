@@ -4,7 +4,22 @@ import { useSpring, animated } from '@react-spring/web';
 const Card: FC <{item: CarouselItem, scrolling: boolean}> = ({item, scrolling}) => {
   const cardRef = useRef<null | HTMLDivElement>(null)
 
-  const [spring, api] = useSpring(() => {})
+  const [spring, api] = useSpring(() => ({
+    config: {
+      tension: 100,
+      friction: 20 + (item.idx ? (item.idx * 5) : 5),
+      mass: 3,
+    },
+    from: {
+      translateY: item.idx ? (item.idx + 1) * -window.innerHeight : -window.innerHeight, 
+      transform: `perspective(900px) rotateX(360deg) rotateY(0deg) scale(1)`
+    },
+    to: {
+      translateY: 0, 
+      transform: `perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)`
+    },
+  }))
+
 
 
   const findTilt = (x: number, y: number, rect: DOMRect | undefined): [number, number] => {
@@ -49,11 +64,13 @@ const Card: FC <{item: CarouselItem, scrolling: boolean}> = ({item, scrolling}) 
         display: "flex",
         justifyContent: "space-evenly",
         alignItems: "center",
-        position: "relative"
+        position: "relative",
+        backgroundColor: "white",
       }}
     >
       <div 
         onMouseMove={(e) => handleMouseMove(e)}
+        onMouseEnter={(e) => handleMouseMove(e)}
         onMouseLeave={() => handleMouseLeave()}
         style={{
           position: 'absolute',
