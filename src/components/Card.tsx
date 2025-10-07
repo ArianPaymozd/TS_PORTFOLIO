@@ -24,18 +24,26 @@ const Card: FC <{item: CarouselItem, scrolling: boolean}> = ({item, scrolling}) 
 
   const findTilt = (x: number, y: number, rect: DOMRect | undefined): [number, number] => {
     if (!rect) return [0, 0]
+    let rotateX = (x - rect.left - rect.width / 2) / 7
+    let rotateY = (y - rect.top - rect.height / 2) / 3
+    if (rotateX > 20) rotateX = 16
+    if (rotateX < -20) rotateX = -16
+    if (rotateY > 20) rotateY = 16
+    if (rotateY < -20) rotateY = -16
+
     return [
-      -(y - rect.height / 2) / 3,
-      (x - rect.width / 2) / 7,
+      -rotateY,
+      rotateX,
     ]
   };
 
-  const handleMouseMove = (e: {nativeEvent: {offsetX: number, offsetY: number}}) => {
+  const handleMouseMove = (e: {nativeEvent: {clientX: number, clientY: number}}) => {
     if (scrolling) {
       return
     }
     const rect = cardRef?.current?.getBoundingClientRect()
-    const [x, y] = findTilt(e.nativeEvent.offsetX, e.nativeEvent.offsetY, rect)
+    const [x, y] = findTilt(e.nativeEvent.clientX, e.nativeEvent.clientY, rect)
+    console.log([x, y])
     api.start({
       to: {
         transform: `perspective(900px) rotateX(${x}deg) rotateY(${y}deg) scale(1.1)`
