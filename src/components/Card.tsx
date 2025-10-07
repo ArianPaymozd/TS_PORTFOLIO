@@ -43,8 +43,12 @@ const Card: FC <{item: CarouselItem, scrolling: boolean}> = ({item, scrolling}) 
     }
     const rect = cardRef?.current?.getBoundingClientRect()
     const [x, y] = findTilt(e.nativeEvent.clientX, e.nativeEvent.clientY, rect)
-    console.log([x, y])
     api.start({
+      config: {
+        tension: 100,
+        friction: 20,
+        mass: 3,
+      },
       to: {
         transform: `perspective(900px) rotateX(${x}deg) rotateY(${y}deg) scale(1.1)`
       }
@@ -53,6 +57,11 @@ const Card: FC <{item: CarouselItem, scrolling: boolean}> = ({item, scrolling}) 
 
   const handleMouseLeave = () =>{
     api.start({
+      config: {
+        tension: 100,
+        friction: 20,
+        mass: 3,
+      },
       to: {
         transform: `perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)`
       }

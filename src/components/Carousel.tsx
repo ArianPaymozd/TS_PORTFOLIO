@@ -76,6 +76,7 @@ const Carousel: FC <{items: CarouselItem[]}> = ({items}) => {
       ref={scrollRef}
       style={{
         height: "100%",
+        padding: '.2vh 0px 3vh',
         overflow: "auto",
       }}
       onTouchStartCapture={() => handleMouseLeave()}
